@@ -8,7 +8,7 @@ function buttonClick(value){
     if(isNaN(value)){
         handleSymbol(value);
     }else{
-        handlesNumber(value)
+        handleNumber(value)
     }
     screen.innerText = buffer; 
 }
@@ -36,9 +36,9 @@ function handleSymbol(symbol){
             }
             break;
         case '+':
-        case '-':
+        case '−':
         case '×':
-        case '+':
+        case '÷':
             handleMath(symbol);
             break;
     }
@@ -50,6 +50,7 @@ function handleMath(symbol){
     }
 
     const intBuffer = parseInt(buffer);
+
     if(runningTotal === 0){
         runningTotal = intBuffer;
     }else{
@@ -62,7 +63,7 @@ function handleMath(symbol){
 function flushOperation(intBuffer){
     if(previousOperator === '+'){
         runningTotal += intBuffer;
-    }else if(previousOperator === '-' ){
+    }else if(previousOperator === '−' ){
         runningTotal -= intBuffer;
     }else if(previousOperator === '×'){
         runningTotal *= intBuffer;
@@ -71,7 +72,7 @@ function flushOperation(intBuffer){
     }
 }
 
-function handlesNumber(numberString){
+function handleNumber(numberString){
     if(buffer === '0'){
         buffer = numberString;
     }else{
